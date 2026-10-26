@@ -12,7 +12,7 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["NotificationService/NotificationService.csproj", "NotificationService/"]
-RUN dotnet restore "./NotificationService/NotificationService.csproj"
+RUN dotnet restore "./NotificationService/NotificationService.csproj" --force
 COPY . .
 WORKDIR "/src/NotificationService"
 RUN dotnet build "./NotificationService.csproj" -c $BUILD_CONFIGURATION -o /app/build
